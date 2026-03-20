@@ -1,0 +1,675 @@
+/* ============================================
+   LIQUID GLASS 2.0 COMPONENT SYSTEM
+   Apple-style Glassmorphism for TVG
+   ============================================ */
+
+@import url('variables.css');
+
+/* ============================================
+   BASE GLASS CARD
+   ============================================ */
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    var(--glass-shadow),
+    var(--glass-shadow-inset),
+    0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+/* Hover State - Inflation Effect */
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    var(--glass-shadow-inset),
+    0 0 0 0.5px rgba(255, 255, 255, 0.15);
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+/* Active/Click State */
+.glass-card:active {
+  transform: translateY(-2px) scale(1.01);
+  background: var(--glass-bg-active);
+}
+
+/* Focus State - Glowing Border */
+.glass-card:focus-visible {
+  outline: none;
+  border-color: var(--tvg-electric-blue);
+  box-shadow: 
+    var(--glass-shadow),
+    0 0 0 3px rgba(37, 99, 235, 0.3),
+    var(--glass-shadow-inset);
+}
+
+/* ============================================
+   GLASS CARD VARIANTS
+   ============================================ */
+
+/* Large Hero Panel */
+.glass-hero {
+  border-radius: var(--radius-3xl);
+  padding: var(--space-3xl);
+}
+
+/* Compact Card */
+.glass-compact {
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+/* Pill Shape */
+.glass-pill {
+  border-radius: var(--radius-pill);
+  padding: var(--space-sm) var(--space-lg);
+}
+
+/* Ghost Variant - Minimal */
+.glass-ghost {
+  background: transparent;
+  backdrop-filter: none;
+  border-color: var(--glass-border);
+}
+
+.glass-ghost:hover {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-light);
+}
+
+/* Primary CTA Variant */
+.glass-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.2) 0%,
+    rgba(37, 99, 235, 0.1) 100%
+  );
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.glass-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.3) 0%,
+    rgba(37, 99, 235, 0.15) 100%
+  );
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 
+    var(--glass-glow-blue),
+    var(--glass-shadow),
+    var(--glass-shadow-inset);
+}
+
+/* ============================================
+   LIQUID RIPPLE EFFECT
+   ============================================ */
+
+.liquid-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-expand 0.8s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   GLASS BUTTON
+   ============================================ */
+
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: var(--font-semibold);
+  color: var(--tvg-white-soft);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    var(--glass-shadow),
+    var(--glass-shadow-inset);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.glass-btn:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    var(--glass-shadow-inset);
+}
+
+.glass-btn:hover::before {
+  opacity: 1;
+}
+
+.glass-btn:active {
+  transform: translateY(0);
+}
+
+/* Primary Button */
+.glass-btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--tvg-electric-blue) 0%,
+    var(--tvg-royal-blue) 100%
+  );
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 
+    0 4px 20px rgba(37, 99, 235, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    var(--tvg-blue-light) 0%,
+    var(--tvg-electric-blue) 100%
+  );
+  box-shadow: 
+    0 8px 30px rgba(37, 99, 235, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Ghost Button */
+.glass-btn-ghost {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.glass-btn-ghost:hover {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-light);
+}
+
+/* ============================================
+   GLASS INPUT
+   ============================================ */
+
+.glass-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--tvg-white-soft);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  outline: none;
+}
+
+.glass-input::placeholder {
+  color: var(--tvg-gray-400);
+}
+
+.glass-input:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.glass-input:focus {
+  border-color: var(--tvg-electric-blue);
+  box-shadow: 
+    0 0 0 3px rgba(37, 99, 235, 0.2),
+    var(--glass-shadow-inset);
+}
+
+/* ============================================
+   GLASS NAVIGATION
+   ============================================ */
+
+.glass-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  padding: var(--space-md) var(--space-xl);
+  transition: all var(--transition-normal);
+}
+
+.glass-nav.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ============================================
+   GLASS MODAL
+   ============================================ */
+
+.glass-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.glass-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.glass-modal {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-3xl);
+  padding: var(--space-3xl);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9) translateY(20px);
+  transition: all var(--transition-slow);
+}
+
+.glass-modal-overlay.active .glass-modal {
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================
+   GLASS TAG/PILL
+   ============================================ */
+
+.glass-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
+  color: var(--tvg-gray-200);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.glass-tag:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+/* Active Tag */
+.glass-tag.active {
+  background: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.4);
+  color: var(--tvg-blue-glow);
+}
+
+/* ============================================
+   FLOATING ORBS (Decorative)
+   ============================================ */
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-orb-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.floating-orb-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  left: 5%;
+  animation-delay: -2s;
+}
+
+.floating-orb-3 {
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  right: 20%;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(5deg);
+  }
+}
+
+/* ============================================
+   GLASS ACCORDION
+   ============================================ */
+
+.glass-accordion-item {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.glass-accordion-item:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.glass-accordion-header {
+  width: 100%;
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  color: var(--tvg-white-soft);
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  text-align: left;
+}
+
+.glass-accordion-icon {
+  transition: transform var(--transition-normal);
+}
+
+.glass-accordion-item.open .glass-accordion-icon {
+  transform: rotate(180deg);
+}
+
+.glass-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+}
+
+.glass-accordion-item.open .glass-accordion-content {
+  max-height: 500px;
+}
+
+.glass-accordion-body {
+  padding: 0 var(--space-lg) var(--space-lg);
+  color: var(--tvg-gray-300);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================
+   GLASS CAROUSEL
+   ============================================ */
+
+.glass-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-carousel-track {
+  display: flex;
+  transition: transform var(--transition-slow);
+}
+
+.glass-carousel-slide {
+  flex: 0 0 100%;
+  padding: var(--space-lg);
+}
+
+.glass-carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.glass-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--glass-border);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.glass-carousel-dot.active {
+  background: var(--tvg-electric-blue);
+  width: 30px;
+  border-radius: var(--radius-pill);
+}
+
+/* ============================================
+   GLASS STATS COUNTER
+   ============================================ */
+
+.glass-stat {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.glass-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: var(--font-bold);
+  color: var(--tvg-white-soft);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.glass-stat-number .counter {
+  background: linear-gradient(135deg, var(--tvg-white-soft) 0%, var(--tvg-blue-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-stat-label {
+  font-size: var(--text-small);
+  color: var(--tvg-gray-400);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+/* ============================================
+   MAGNETIC BUTTON EFFECT
+   ============================================ */
+
+.magnetic-btn {
+  transition: transform 0.1s ease-out;
+}
+
+/* ============================================
+   GLASS PRICING CARD
+   ============================================ */
+
+.glass-pricing {
+  position: relative;
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.glass-pricing.featured {
+  border-color: var(--tvg-electric-blue);
+  box-shadow: 
+    var(--glass-glow-blue),
+    var(--glass-shadow),
+    var(--glass-shadow-inset);
+}
+
+.glass-pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-xs) var(--space-md);
+  background: linear-gradient(135deg, var(--tvg-electric-blue), var(--tvg-blue-light));
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.glass-pricing-name {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: var(--font-bold);
+  color: var(--tvg-white-soft);
+  margin-bottom: var(--space-sm);
+}
+
+.glass-pricing-price {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: var(--font-black);
+  color: var(--tvg-white-soft);
+  margin-bottom: var(--space-lg);
+}
+
+.glass-pricing-price span {
+  font-size: var(--text-body);
+  font-weight: var(--font-regular);
+  color: var(--tvg-gray-400);
+}
+
+.glass-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-xl);
+}
+
+.glass-pricing-features li {
+  padding: var(--space-sm) 0;
+  color: var(--tvg-gray-300);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-pricing-features li:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: var(--radius-lg);
+  }
+  
+  .glass-hero {
+    padding: var(--space-xl);
+    border-radius: var(--radius-2xl);
+  }
+  
+  .glass-btn {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--text-small);
+  }
+  
+  .floating-orb {
+    display: none;
+  }
+  
+  .glass-pricing {
+    padding: var(--space-xl);
+  }
+}

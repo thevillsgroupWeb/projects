@@ -1,0 +1,157 @@
+/* ============================================
+   THE VILLS GROUP - DESIGN TOKENS
+   Apple Liquid Glass 2.0 Design System
+   ============================================ */
+
+:root {
+  /* TVG Official Color Palette */
+  --tvg-navy-deep: #0A1628;
+  --tvg-navy-primary: #0D1B3E;
+  --tvg-navy-secondary: #111827;
+  --tvg-royal-blue: #1B3A6B;
+  --tvg-electric-blue: #2563EB;
+  --tvg-blue-light: #3B82F6;
+  --tvg-blue-glow: #60A5FA;
+  
+  /* Neutral Colors */
+  --tvg-white-soft: #F8FAFC;
+  --tvg-white-pure: #FFFFFF;
+  --tvg-gray-100: #F1F5F9;
+  --tvg-gray-200: #E2E8F0;
+  --tvg-gray-300: #CBD5E1;
+  --tvg-gray-400: #94A3B8;
+  --tvg-gray-500: #64748B;
+  --tvg-gray-600: #475569;
+  --tvg-gray-700: #334155;
+  --tvg-gray-800: #1E293B;
+  --tvg-gray-900: #0F172A;
+  
+  /* Accent Colors */
+  --tvg-red: #DC2626;
+  --tvg-red-light: #EF4444;
+  --tvg-red-glow: #F87171;
+  --tvg-gold: #C9A84C;
+  --tvg-gold-light: #D4B85C;
+  --tvg-success: #10B981;
+  --tvg-warning: #F59E0B;
+  --tvg-error: #EF4444;
+  
+  /* Glass System Colors */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-hover: rgba(255, 255, 255, 0.10);
+  --glass-bg-active: rgba(255, 255, 255, 0.14);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.20);
+  --glass-border-glow: rgba(37, 99, 235, 0.40);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-glow-blue: 0 0 30px rgba(37, 99, 235, 0.3);
+  --glass-glow-red: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(220, 38, 38, 0.3);
+  
+  /* Background Gradients */
+  --bg-space-gradient: radial-gradient(ellipse at center, #0D1B3E 0%, #040D1A 70%, #020810 100%);
+  --bg-navy-gradient: linear-gradient(180deg, #0A1628 0%, #0D1B3E 50%, #111827 100%);
+  --bg-hero-mesh: 
+    radial-gradient(at 40% 20%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(27, 58, 107, 0.2) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(37, 99, 235, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(201, 168, 76, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(27, 58, 107, 0.15) 0px, transparent 50%);
+  
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  
+  /* Font Sizes */
+  --text-hero: clamp(48px, 8vw, 72px);
+  --text-h1: clamp(36px, 5vw, 48px);
+  --text-h2: clamp(28px, 3.5vw, 36px);
+  --text-h3: clamp(20px, 2.5vw, 24px);
+  --text-h4: clamp(18px, 2vw, 20px);
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-xs: 12px;
+  
+  /* Font Weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  
+  /* Line Heights */
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+  --leading-loose: 2;
+  
+  /* Letter Spacing */
+  --tracking-tight: -0.04em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.04em;
+  --tracking-widest: 0.08em;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-slower: 600ms ease;
+  
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-preloader: 1000;
+  
+  /* Glass Component Specific */
+  --glass-blur: blur(40px) saturate(180%) brightness(110%);
+  --glass-blur-light: blur(20px) saturate(150%) brightness(105%);
+  
+  /* Animation Durations */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 600ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+}
+
+/* Dark mode is default for this design */
+[data-theme="light"] {
+  --glass-bg: rgba(15, 23, 42, 0.06);
+  --glass-bg-hover: rgba(15, 23, 42, 0.10);
+  --glass-border: rgba(15, 23, 42, 0.12);
+  --glass-border-hover: rgba(15, 23, 42, 0.20);
+  --bg-space-gradient: radial-gradient(ellipse at center, #F8FAFC 0%, #F1F5F9 70%, #E2E8F0 100%);
+}
